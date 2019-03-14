@@ -129,7 +129,7 @@ class ChecklistViewController: UITableViewController {
             try jsonData.write(to: dataFileUrl)
         }
         catch {
-            
+            print("error")
         }
     }
     

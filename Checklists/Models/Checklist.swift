@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Checklist  {
+class Checklist : Codable  {
     var name: String
     var items: [ChecklistItem]?
     
