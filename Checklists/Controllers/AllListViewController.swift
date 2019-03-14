@@ -10,6 +10,7 @@ import UIKit
 
 class AllListViewController: UITableViewController {
 
+    //MARK: - Variables
     var documentDirectory: URL {
         get{
             return FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
@@ -24,31 +25,34 @@ class AllListViewController: UITableViewController {
     
     var listOfChecklists = [Checklist]()
 
+    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        listOfChecklists.append(Checklist(name: "list1"))
-//        listOfChecklists.append(Checklist(name: "list2"))
-//        listOfChecklists.append(Checklist(name: "list3"))
-        
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
-    
+
+    //MARK: - Require Init
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        loadChecklistItems()
+
+        loadChecklists()
+    }
+    
+    //MARK: - ViewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        saveChecklists()
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "toChecklistItems":
             let destVC = segue.destination as! ChecklistViewController
-            destVC.list = listOfChecklists[(tableView.indexPath(for: sender as! UITableViewCell)?.row)!]
+            destVC.checkList = listOfChecklists[(tableView.indexPath(for: sender as! UITableViewCell)?.row)!]
         case "editChecklist":
             let navVC = segue.destination as! UINavigationController
             let destVC = navVC.topViewController as! ListDetailViewController
@@ -64,7 +68,9 @@ class AllListViewController: UITableViewController {
             return
         }
     }
- 
+    
+    
+
     //MARK: - tableView methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chosenList")! as UITableViewCell
@@ -82,13 +88,11 @@ class AllListViewController: UITableViewController {
     //MARK: - Configure Text
     func configureText(for cell: UITableViewCell, withItem item: Checklist) {
         cell.textLabel?.text = item.name
-//        let label = cell as! ChecklistItem
-//        label.labelCell.text = item.text
-        saveChecklistItems()
+        saveChecklists()
     }
     
     //MARK:- persistance Locale
-    func saveChecklistItems() {
+    func saveChecklists() {
         let jsonEncoder = JSONEncoder()
         do {
             let jsonData = try jsonEncoder.encode(listOfChecklists)
@@ -99,7 +103,7 @@ class AllListViewController: UITableViewController {
         }
     }
     
-    func loadChecklistItems() {
+    func loadChecklists() {
         do {
             let jsonDecoder = JSONDecoder()
             let data = try Data.init(contentsOf: dataFileUrl)
@@ -114,11 +118,12 @@ class AllListViewController: UITableViewController {
     }
 }
 
+//MARK: - Extension ListDetailViewControllerDelegate
 extension AllListViewController : ListDetailViewControllerDelegate {
     
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
-        saveChecklistItems()
+        saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist) {
@@ -126,7 +131,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         listOfChecklists.append(item)
         let newIndexPath = IndexPath(row: listOfChecklists.count-1, section: 0)
         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-        saveChecklistItems()
+        saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditingItem item: Checklist) {
@@ -134,7 +139,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         let row = listOfChecklists.index(where: {$0 === item})!
         let newIndexPath = IndexPath(row: row, section: 0)
         self.tableView.reloadRows(at: [newIndexPath], with: .automatic)
-        saveChecklistItems()
+        saveChecklists()
     }
     
     
