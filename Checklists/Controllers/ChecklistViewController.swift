@@ -26,6 +26,7 @@ class ChecklistViewController: UITableViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     var listCheckedItems: [ChecklistItem] = []
+    var list: Checklist!
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,6 +55,8 @@ class ChecklistViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = list.name
         // Do any additional setup after loading the view, typically from a nib.
         
 //        let check1 = ChecklistItem(text: "Finir le cours d’iOS")
@@ -116,14 +119,6 @@ class ChecklistViewController: UITableViewController {
         let label = cell as! ChecklistItemCell
         label.labelCell.text = item.text
         saveChecklistItems()
-    }
-    
-    @IBAction func addDummyTodo(_ sender: UIBarButtonItem) {
-        
-        listCheckedItems.append(ChecklistItem(text: "Dummy"))
-        self.tableView.insertRows(at: [
-            IndexPath(row: listCheckedItems.count-1, section: 0)], with: .automatic)
-        
     }
     
     //MARK:- persistance Locale
