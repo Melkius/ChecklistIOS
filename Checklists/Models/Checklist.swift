@@ -11,6 +11,7 @@ import UIKit
 class Checklist : Codable  {
     var name: String
     var items: [ChecklistItem]?
+    var icon: IconAsset?
     
     var uncheckedItemsCount : Int {
         get {
@@ -21,8 +22,9 @@ class Checklist : Codable  {
        
     }
     
-    init(name: String, listItems: [ChecklistItem]? = []) {
+    init(name: String, listItems: [ChecklistItem]? = [], icon: IconAsset = .NoIcon) {
         self.name = name
         self.items = listItems
+        self.icon = icon
     }
 }
