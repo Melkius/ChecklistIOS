@@ -27,11 +27,11 @@ class DataModel {
     var listOfChecklists = [Checklist]()
     
     private init() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveChecklists),
-            name: UIApplication.didEnterBackgroundNotification,
-            object: nil)
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(saveChecklists),
+//            name: UIApplication.didEnterBackgroundNotification,
+//            object: nil)
     }
     
     

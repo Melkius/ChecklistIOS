@@ -11,17 +11,7 @@ import UIKit
 class AllListViewController: UITableViewController {
 
     //MARK: - Variables
-//    var documentDirectory: URL {
-//        get{
-//            return FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
-//        }
-//    }
-//
-//    var dataFileUrl: URL {
-//        get {
-//            return documentDirectory.appendingPathComponent("allCkecklists").appendingPathExtension("json")
-//        }
-//    }
+
     var dataModel = DataModel.shared
     var listOfChecklists = [Checklist]()
 
@@ -91,31 +81,7 @@ class AllListViewController: UITableViewController {
         //dataModel.saveChecklists()
     }
     
-    //MARK:- persistance Locale
-//    func saveChecklists() {
-//        let jsonEncoder = JSONEncoder()
-//        do {
-//            let jsonData = try jsonEncoder.encode(listOfChecklists)
-//            try jsonData.write(to: dataFileUrl)
-//        }
-//        catch {
-//            print("error")
-//        }
-//    }
-//
-//    func loadChecklists() {
-//        do {
-//            let jsonDecoder = JSONDecoder()
-//            let data = try Data.init(contentsOf: dataFileUrl)
-//            listOfChecklists = try jsonDecoder.decode([Checklist].self, from: data)
-//            for item in listOfChecklists {
-//                print(item.name)
-//            }
-//        }
-//        catch {
-//            print("error")
-//        }
-//    }
+
 }
 
 //MARK: - Extension ListDetailViewControllerDelegate
@@ -129,6 +95,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist) {
         controller.dismiss(animated: true, completion: nil)
         listOfChecklists.append(item)
+        dataModel.listOfChecklists = listOfChecklists
         let newIndexPath = IndexPath(row: listOfChecklists.count-1, section: 0)
         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
         //dataModel.saveChecklists()
