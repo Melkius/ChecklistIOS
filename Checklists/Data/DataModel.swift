@@ -57,9 +57,15 @@ class DataModel {
         catch {
             print("error")
         }
-        return listOfChecklists
+        
+        return sortChecklists(list: listOfChecklists)
     }
     
-    
+    func sortChecklists(list: [Checklist]) -> [Checklist] {
+        var listOrdered = list
+        listOrdered.sort { $0.name.localizedCompare($1.name) == .orderedAscending }
+        return listOrdered
+    }
+
 }
 
