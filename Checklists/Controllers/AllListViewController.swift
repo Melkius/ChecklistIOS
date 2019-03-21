@@ -11,18 +11,18 @@ import UIKit
 class AllListViewController: UITableViewController {
 
     //MARK: - Variables
-    var documentDirectory: URL {
-        get{
-            return FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
-        }
-    }
-    
-    var dataFileUrl: URL {
-        get {
-            return documentDirectory.appendingPathComponent("allCkecklists").appendingPathExtension("json")
-        }
-    }
-    
+//    var documentDirectory: URL {
+//        get{
+//            return FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
+//        }
+//    }
+//
+//    var dataFileUrl: URL {
+//        get {
+//            return documentDirectory.appendingPathComponent("allCkecklists").appendingPathExtension("json")
+//        }
+//    }
+    var dataModel = DataModel.shared
     var listOfChecklists = [Checklist]()
 
     
@@ -38,13 +38,13 @@ class AllListViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        loadChecklists()
+        listOfChecklists = dataModel.loadChecklists()
     }
     
     //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        saveChecklists()
+        //dataModel.saveChecklists()
     }
     
     // MARK: - Navigation
@@ -88,34 +88,34 @@ class AllListViewController: UITableViewController {
     //MARK: - Configure Text
     func configureText(for cell: UITableViewCell, withItem item: Checklist) {
         cell.textLabel?.text = item.name
-        saveChecklists()
+        //dataModel.saveChecklists()
     }
     
     //MARK:- persistance Locale
-    func saveChecklists() {
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(listOfChecklists)
-            try jsonData.write(to: dataFileUrl)
-        }
-        catch {
-            print("error")
-        }
-    }
-    
-    func loadChecklists() {
-        do {
-            let jsonDecoder = JSONDecoder()
-            let data = try Data.init(contentsOf: dataFileUrl)
-            listOfChecklists = try jsonDecoder.decode([Checklist].self, from: data)
-            for item in listOfChecklists {
-                print(item.name)
-            }
-        }
-        catch {
-            print("error")
-        }
-    }
+//    func saveChecklists() {
+//        let jsonEncoder = JSONEncoder()
+//        do {
+//            let jsonData = try jsonEncoder.encode(listOfChecklists)
+//            try jsonData.write(to: dataFileUrl)
+//        }
+//        catch {
+//            print("error")
+//        }
+//    }
+//
+//    func loadChecklists() {
+//        do {
+//            let jsonDecoder = JSONDecoder()
+//            let data = try Data.init(contentsOf: dataFileUrl)
+//            listOfChecklists = try jsonDecoder.decode([Checklist].self, from: data)
+//            for item in listOfChecklists {
+//                print(item.name)
+//            }
+//        }
+//        catch {
+//            print("error")
+//        }
+//    }
 }
 
 //MARK: - Extension ListDetailViewControllerDelegate
@@ -123,7 +123,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
     
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
-        saveChecklists()
+        //dataModel.saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist) {
@@ -131,7 +131,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         listOfChecklists.append(item)
         let newIndexPath = IndexPath(row: listOfChecklists.count-1, section: 0)
         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-        saveChecklists()
+        //dataModel.saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditingItem item: Checklist) {
@@ -139,7 +139,7 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         let row = listOfChecklists.index(where: {$0 === item})!
         let newIndexPath = IndexPath(row: row, section: 0)
         self.tableView.reloadRows(at: [newIndexPath], with: .automatic)
-        saveChecklists()
+        //dataModel.saveChecklists()
     }
     
     
