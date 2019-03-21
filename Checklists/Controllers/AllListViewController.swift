@@ -28,8 +28,9 @@ class AllListViewController: UITableViewController {
     //MARK: - Require Init
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
+    
         listOfChecklists = dataModel.loadChecklists()
+        
     }
     
     //MARK: - ViewWillAppear
@@ -89,7 +90,6 @@ class AllListViewController: UITableViewController {
         
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = detailText
-        //dataModel.saveChecklists()
     }
     
 
@@ -105,9 +105,11 @@ extension AllListViewController : ListDetailViewControllerDelegate {
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist) {
         controller.dismiss(animated: true, completion: nil)
         listOfChecklists.append(item)
+        listOfChecklists = dataModel.sortChecklists(list: listOfChecklists)
         dataModel.listOfChecklists = listOfChecklists
         let newIndexPath = IndexPath(row: listOfChecklists.count-1, section: 0)
         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+        self.tableView.reloadData()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditingItem item: Checklist) {
@@ -115,6 +117,9 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         let row = listOfChecklists.index(where: {$0 === item})!
         let newIndexPath = IndexPath(row: row, section: 0)
         self.tableView.reloadRows(at: [newIndexPath], with: .automatic)
+        listOfChecklists = dataModel.sortChecklists(list: listOfChecklists)
+        self.tableView.reloadData()
+
     }
     
     
