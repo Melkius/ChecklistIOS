@@ -90,6 +90,7 @@ class AllListViewController: UITableViewController {
         
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = detailText
+        cell.imageView?.image = item.icon?.image
     }
     
 
