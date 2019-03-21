@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIy-AY-DUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="5.8470764617691158"/>
+            <point key="canvasLocation" x="1009" y="6"/>
         </scene>
         <!--AddList-->
         <scene sceneID="E0e-sC-p1E">
@@ -93,20 +93,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bvx-sG-dAT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the List" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="bvx-sG-dAT">
+                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bvx-sG-dAT" secondAttribute="trailing" constant="8" id="A1L-PO-94G"/>
+                                                <constraint firstItem="bvx-sG-dAT" firstAttribute="top" secondItem="wwi-9n-kmX" secondAttribute="top" constant="8" id="EFc-W3-qKx"/>
+                                                <constraint firstAttribute="bottom" secondItem="bvx-sG-dAT" secondAttribute="bottom" constant="8" id="KT4-dt-77v"/>
+                                                <constraint firstItem="bvx-sG-dAT" firstAttribute="leading" secondItem="wwi-9n-kmX" secondAttribute="leading" constant="8" id="jqS-WT-RiE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="bvx-sG-dAT" firstAttribute="top" secondItem="dfK-hV-uST" secondAttribute="top" id="YBK-9C-7p1"/>
-                                            <constraint firstAttribute="trailing" secondItem="bvx-sG-dAT" secondAttribute="trailing" id="emi-eM-Dlo"/>
-                                            <constraint firstItem="bvx-sG-dAT" firstAttribute="leading" secondItem="dfK-hV-uST" secondAttribute="leading" id="jDc-jy-AMQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="bvx-sG-dAT" secondAttribute="bottom" id="pzq-iW-wtw"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -155,8 +155,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-5g-uzQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the item" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="ax8-5g-uzQ">
+                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -167,18 +167,12 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ax8-5g-uzQ" firstAttribute="top" secondItem="Rdm-7k-v0h" secondAttribute="top" id="5Pe-Sh-SQg"/>
-                                                <constraint firstAttribute="trailing" secondItem="ax8-5g-uzQ" secondAttribute="trailing" id="AQt-oK-5Bb"/>
-                                                <constraint firstItem="ax8-5g-uzQ" firstAttribute="leading" secondItem="Rdm-7k-v0h" secondAttribute="leading" id="Izr-bo-nod"/>
-                                                <constraint firstAttribute="bottom" secondItem="ax8-5g-uzQ" secondAttribute="bottom" id="iWX-jE-Qh3"/>
+                                                <constraint firstAttribute="bottom" secondItem="ax8-5g-uzQ" secondAttribute="bottom" constant="8" id="3O5-vZ-KUQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="ax8-5g-uzQ" secondAttribute="trailing" constant="8" id="5Ui-gV-e0J"/>
+                                                <constraint firstItem="ax8-5g-uzQ" firstAttribute="leading" secondItem="Rdm-7k-v0h" secondAttribute="leading" constant="8" id="Whp-HD-t4y"/>
+                                                <constraint firstItem="ax8-5g-uzQ" firstAttribute="top" secondItem="Rdm-7k-v0h" secondAttribute="top" constant="8" id="oG5-OE-qGs"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ax8-5g-uzQ" secondAttribute="trailing" id="GVK-A1-nKi"/>
-                                            <constraint firstAttribute="bottom" secondItem="ax8-5g-uzQ" secondAttribute="bottom" constant="0.5" id="QBV-FF-tF5"/>
-                                            <constraint firstItem="ax8-5g-uzQ" firstAttribute="top" secondItem="la1-qz-WML" secondAttribute="top" id="rLy-wH-gn5"/>
-                                            <constraint firstItem="ax8-5g-uzQ" firstAttribute="leading" secondItem="la1-qz-WML" secondAttribute="leading" id="vfx-cq-mq4"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

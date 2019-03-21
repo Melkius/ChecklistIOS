@@ -18,6 +18,7 @@
 		9CCA3DE8223A46A200774ABD /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA3DE7223A46A200774ABD /* AllListViewController.swift */; };
 		9CCA3DEA223A46B800774ABD /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA3DE9223A46B800774ABD /* ListDetailViewController.swift */; };
 		9CCA3DEC223A4F9100774ABD /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA3DEB223A4F9100774ABD /* Checklist.swift */; };
+		9CCA3DEF223AB8F900774ABD /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA3DEE223AB8F900774ABD /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		9CCA3DE7223A46A200774ABD /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		9CCA3DE9223A46B800774ABD /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		9CCA3DEB223A4F9100774ABD /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		9CCA3DEE223AB8F900774ABD /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		9C2A8CDB221575EE00FD96F7 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
+				9CCA3DED223AB8E600774ABD /* Data */,
 				9C2A8CF0221577E300FD96F7 /* Controllers */,
 				9C2A8CEF221577DC00FD96F7 /* Views */,
 				9C2A8CEE221577D300FD96F7 /* Models */,
@@ -104,6 +107,14 @@
 				9CCA3DE9223A46B800774ABD /* ListDetailViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9CCA3DED223AB8E600774ABD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9CCA3DEE223AB8F900774ABD /* DataModel.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				9C8B03252215B11E00FEBB5E /* ItemDetailViewController.swift in Sources */,
 				9C2A8CF22215785100FD96F7 /* ChecklistItem.swift in Sources */,
 				9C2A8CDD221575EE00FD96F7 /* AppDelegate.swift in Sources */,
+				9CCA3DEF223AB8F900774ABD /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
