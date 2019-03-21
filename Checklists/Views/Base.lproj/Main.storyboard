@@ -110,6 +110,39 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="T55-mC-kaZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="f4h-Wf-Tyg">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f4h-Wf-Tyg" id="DaK-kG-DKe">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxM-3J-dmw">
+                                                    <rect key="frame" x="24" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Icon" translatesAutoresizingMaskIntoConstraints="NO" id="GVS-Eg-GA1">
+                                                    <rect key="frame" x="305" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="KUk-B3-xfo"/>
+                                                        <constraint firstAttribute="width" constant="36" id="fS0-0h-W2E"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yxM-3J-dmw" firstAttribute="centerY" secondItem="DaK-kG-DKe" secondAttribute="centerY" id="JsQ-Yc-Hsj"/>
+                                                <constraint firstAttribute="trailing" secondItem="GVS-Eg-GA1" secondAttribute="trailing" id="Onh-2p-auo"/>
+                                                <constraint firstItem="GVS-Eg-GA1" firstAttribute="centerY" secondItem="DaK-kG-DKe" secondAttribute="centerY" id="hGe-x4-Zbf"/>
+                                                <constraint firstItem="yxM-3J-dmw" firstAttribute="leading" secondItem="DaK-kG-DKe" secondAttribute="leadingMargin" constant="8" id="oBp-Dg-UVT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="VtL-W8-1dz" id="QMT-qG-G5S"/>
@@ -130,6 +163,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnDone" destination="cVG-g5-reV" id="EA5-i7-oIW"/>
+                        <outlet property="icone" destination="GVS-Eg-GA1" id="4GO-Aj-2h3"/>
                         <outlet property="tf_newChecklist" destination="bvx-sG-dAT" id="pkA-yA-R7J"/>
                     </connections>
                 </tableViewController>
@@ -319,6 +353,7 @@
     </scenes>
     <resources>
         <image name="Appointments" width="36" height="36"/>
+        <image name="No Icon" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k0g-vU-dpN"/>

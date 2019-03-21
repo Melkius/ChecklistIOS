@@ -12,6 +12,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tf_newChecklist: UITextField!
     @IBOutlet weak var btnDone: UIBarButtonItem!
+    @IBOutlet weak var icone: UIImageView!
     
     var delegate: ListDetailViewControllerDelegate!
     var itemToEdit: Checklist?
@@ -32,6 +33,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         tableView.dataSource = self
         
         tf_newChecklist.text = itemToEdit?.name ?? ""
+        icone.image = itemToEdit?.icon?.image
         if (itemToEdit != nil) {
             navigationItem.title = "Edition"
         } else {

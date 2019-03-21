@@ -12,6 +12,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate{
 
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var tf_newTODO: UITextField!
+    @IBOutlet weak var icone: UIImageView!
     
     var delegate: ItemDetailViewControllerDelegate!
     var itemToEdit: ChecklistItem?
