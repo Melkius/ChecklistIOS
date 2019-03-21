@@ -34,8 +34,6 @@ class DataModel {
             object: nil)
     }
     
-    
-    
     @objc func saveChecklists() {
         let jsonEncoder = JSONEncoder()
         do {
