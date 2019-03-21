@@ -12,6 +12,15 @@ class Checklist : Codable  {
     var name: String
     var items: [ChecklistItem]?
     
+    var uncheckedItemsCount : Int {
+        get {
+            return items?.filter({ (item) -> Bool in
+                !item.checked
+            }).count ?? 0
+        }
+       
+    }
+    
     init(name: String, listItems: [ChecklistItem]? = []) {
         self.name = name
         self.items = listItems

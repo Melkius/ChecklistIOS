@@ -16,6 +16,7 @@ class AllListViewController: UITableViewController {
     var listOfChecklists = [Checklist]()
 
     
+    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class AllListViewController: UITableViewController {
     //MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //dataModel.saveChecklists()
+        tableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -77,7 +78,17 @@ class AllListViewController: UITableViewController {
     
     //MARK: - Configure Text
     func configureText(for cell: UITableViewCell, withItem item: Checklist) {
+        var detailText: String
+        if item.items?.count == 0 {
+            detailText = "no tasks"
+        } else if item.uncheckedItemsCount == 0 {
+            detailText = "all done"
+        } else {
+            detailText = "\(item.uncheckedItemsCount) reamining"
+        }
+        
         cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = detailText
         //dataModel.saveChecklists()
     }
     
@@ -89,7 +100,6 @@ extension AllListViewController : ListDetailViewControllerDelegate {
     
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
-        //dataModel.saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist) {
@@ -98,7 +108,6 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         dataModel.listOfChecklists = listOfChecklists
         let newIndexPath = IndexPath(row: listOfChecklists.count-1, section: 0)
         self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-        //dataModel.saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditingItem item: Checklist) {
@@ -106,7 +115,6 @@ extension AllListViewController : ListDetailViewControllerDelegate {
         let row = listOfChecklists.index(where: {$0 === item})!
         let newIndexPath = IndexPath(row: row, section: 0)
         self.tableView.reloadRows(at: [newIndexPath], with: .automatic)
-        //dataModel.saveChecklists()
     }
     
     
