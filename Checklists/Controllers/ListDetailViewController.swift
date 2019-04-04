@@ -13,12 +13,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var tf_newChecklist: UITextField!
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var icone: UIImageView!
-    @IBOutlet weak var chooseIconCell: UITableViewCell!
     
     var delegate: ListDetailViewControllerDelegate!
     var itemToEdit: Checklist?
     var itemPath: IndexPath?
-    private var selectedIcon: IconAsset!
+    private var selectedIcon: IconAsset? = nil
     
     //MARK: - Will Appear
     override func viewWillAppear(_ animated: Bool) {
@@ -31,17 +30,19 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
         
-        tf_newChecklist.text = itemToEdit?.name ?? ""
-        icone.image = itemToEdit?.icon?.image
-        if (itemToEdit != nil) {
-            navigationItem.title = "Edition"
+        if let item: Checklist = itemToEdit {
+            navigationItem.title = "Edit"
+            tf_newChecklist.text = item.name
+            icone.image = item.icon?.image
         } else {
-            navigationItem.title = "Ajout"
+            navigationItem.title = "Add"
+            btnDone.isEnabled = false
+            selectedIcon = IconAsset.Folder
+            icone.image = selectedIcon?.image
         }
-
+    
     }
     
     
@@ -72,10 +73,8 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         let nsString = textField.text! as NSString
         let newString = nsString.replacingCharacters(in: range, with: string)
         if (newString.isEmpty)  {
-            print("false")
             btnDone.isEnabled = false
         } else {
-            print("true")
             btnDone.isEnabled = true
         }
         return true

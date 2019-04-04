@@ -93,6 +93,7 @@ class ChecklistViewController: UITableViewController {
     // MARK:- Cell contents
     func configureCheckmark(for cell: UITableViewCell, withItem item: ChecklistItem) {
         let checkmark  = cell as! ChecklistItemCell
+        checkmark.checkmarkCell.textColor = #colorLiteral(red: 0.1461000741, green: 0.7443719506, blue: 0.08574145287, alpha: 1)
         checkmark.checkmarkCell.isHidden = !item.checked
     }
     

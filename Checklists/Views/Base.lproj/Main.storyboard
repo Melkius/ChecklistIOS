@@ -25,14 +25,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="✔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLl-Tr-yk7">
-                                            <rect key="frame" x="8" y="8" width="27" height="27.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" ✓ " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLl-Tr-yk7">
+                                            <rect key="frame" x="8" y="8" width="35.5" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKj-V2-qu0">
-                                            <rect key="frame" x="43" y="8" width="256" height="27.5"/>
+                                            <rect key="frame" x="51.5" y="8" width="247.5" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -98,6 +98,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="done" destination="VtL-W8-1dz" eventType="editingDidEndOnExit" id="BOy-AU-7y3"/>
+                                                        <outlet property="delegate" destination="VtL-W8-1dz" id="5oB-Ys-kUD"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -163,7 +167,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnDone" destination="cVG-g5-reV" id="EA5-i7-oIW"/>
-                        <outlet property="chooseIconCell" destination="f4h-Wf-Tyg" id="B8Y-fq-pDj"/>
                         <outlet property="icone" destination="GVS-Eg-GA1" id="4GO-Aj-2h3"/>
                         <outlet property="tf_newChecklist" destination="bvx-sG-dAT" id="pkA-yA-R7J"/>
                         <segue destination="xhy-gP-neh" kind="show" identifier="ShowIconList" id="DTl-LE-E0C"/>
@@ -398,4 +401,5 @@
         <segue reference="k0g-vU-dpN"/>
         <segue reference="orA-cJ-4Rj"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

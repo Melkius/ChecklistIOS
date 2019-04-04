@@ -20,7 +20,7 @@ class DataModel {
     
     private var dataFileUrl: URL {
         get {
-            return documentDirectory.appendingPathComponent("allCkecklists").appendingPathExtension("json")
+            return documentDirectory.appendingPathComponent("allChecklists").appendingPathExtension("json")
         }
     }
     

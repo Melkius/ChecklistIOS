@@ -24,13 +24,3 @@ enum IconAsset : String, CaseIterable, Codable {
         return UIImage(named: self.rawValue)!
     }
 }
-
-extension IconAsset {
-    static var allValues: [IconAsset] {
-        var allValues: [IconAsset] = []
-        for item in IconAsset.allCases {
-            allValues.append(item)
-        }
-        return allValues
-    }
-}

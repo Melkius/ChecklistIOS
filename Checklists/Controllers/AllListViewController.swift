@@ -21,8 +21,7 @@ class AllListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
     }
 
     //MARK: - Require Init
@@ -86,7 +85,7 @@ class AllListViewController: UITableViewController {
         } else if item.uncheckedItemsCount == 0 {
             detailText = "all done"
         } else {
-            detailText = "\(item.uncheckedItemsCount) reamining"
+            detailText = "\(item.uncheckedItemsCount) remaining"
         }
         
         cell.textLabel?.text = item.name
