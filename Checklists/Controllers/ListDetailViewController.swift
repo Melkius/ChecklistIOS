@@ -112,6 +112,7 @@ extension ListDetailViewController: IconPickerViewControllerDelegate {
     
     func iconPickerViewController(_ controller: IconPickerViewController, didFinishEditingItem item: IconAsset) {
         self.selectedIcon = item
+        self.itemToEdit?.icon = item
         self.icone.image = item.image
         navigationController?.popViewController(animated: true)
     }
