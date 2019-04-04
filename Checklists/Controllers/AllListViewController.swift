@@ -68,6 +68,7 @@ class AllListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chosenList")! as UITableViewCell
         
         cell.textLabel?.text = listOfChecklists[indexPath.row].name
+        cell.imageView?.image = listOfChecklists[indexPath.row].icon?.image
         configureText(for: cell, withItem: listOfChecklists[indexPath.row] )
         
         return cell
