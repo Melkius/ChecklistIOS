@@ -13,10 +13,12 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var tf_newChecklist: UITextField!
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var icone: UIImageView!
+    @IBOutlet weak var chooseIconCell: UITableViewCell!
     
     var delegate: ListDetailViewControllerDelegate!
     var itemToEdit: Checklist?
     var itemPath: IndexPath?
+    private var selectedIcon: IconAsset!
     
     //MARK: - Will Appear
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,13 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
 
     }
     
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowIconList", sender: nil)
+    }
+    
+    //MARK : - manage choice done or cancel
     @IBAction func cancel() {
         delegate.listDetailViewControllerDidCancel(self)
     }
@@ -53,6 +62,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             delegate.listDetailViewController(self, didFinishEditingItem: itemToEdit)
         } else {
             let newCheckItem = Checklist(name: tf_newChecklist.text!)
+            newCheckItem.icon = self.selectedIcon
             delegate.listDetailViewController(self, didFinishAddingItem: newCheckItem)
         }
     }
@@ -71,15 +81,20 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
 
-    /*
-    // MARK: - Navigation
+    
+     //MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "ShowIconList" {
+            let destVC = segue.destination as! IconPickerViewController
+            destVC.delegate = self
+            let backItem = UIBarButtonItem()
+            backItem.title = "Cancel"
+            navigationItem.backBarButtonItem = backItem
+        }
     }
-    */
+    
 
 }
 
@@ -87,4 +102,19 @@ protocol ListDetailViewControllerDelegate : class {
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController)
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAddingItem item: Checklist)
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditingItem item: Checklist)
+}
+
+extension ListDetailViewController: IconPickerViewControllerDelegate {
+    
+    func iconPickerViewControllerDelegateDidCancel(_ controller: IconPickerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func iconPickerViewController(_ controller: IconPickerViewController, didFinishEditingItem item: IconAsset) {
+        self.selectedIcon = item
+        self.icone.image = item.image
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
