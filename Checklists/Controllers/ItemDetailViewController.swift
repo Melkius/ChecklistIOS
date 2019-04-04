@@ -27,12 +27,17 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tf_newTODO.text = itemToEdit?.text ?? ""
-        if (itemToEdit != nil) {
+        
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+        
+        if let item: ChecklistItem = itemToEdit {
+            tf_newTODO.text = item.text
+            btnDone.isEnabled = true
             navigationItem.title = "Edition"
         } else {
             navigationItem.title = "Ajout"
         }
+        
     }
     
     //MARK:- textField func
@@ -40,10 +45,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate{
         let nsString = textField.text! as NSString
         let newString = nsString.replacingCharacters(in: range, with: string)
         if (newString.isEmpty)  {
-            print("false")
             btnDone.isEnabled = false
         } else {
-            print("true")
             btnDone.isEnabled = true
         }
         return true

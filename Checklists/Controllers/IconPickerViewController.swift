@@ -21,18 +21,18 @@ class IconPickerViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IconCell")! as UITableViewCell
-        cell.textLabel?.text = IconAsset.allValues[indexPath.row].rawValue
-        cell.imageView?.image = IconAsset.allValues[indexPath.row].image
+        cell.textLabel?.text = IconAsset.allCases[indexPath.row].rawValue
+        cell.imageView?.image = IconAsset.allCases[indexPath.row].image
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.iconPickerViewController(self, didFinishEditingItem: IconAsset.allValues[indexPath.row])
+        delegate.iconPickerViewController(self, didFinishEditingItem: IconAsset.allCases[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return IconAsset.allValues.count
+        return IconAsset.allCases.count
     }
     
     
